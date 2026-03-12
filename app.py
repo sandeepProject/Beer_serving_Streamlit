@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-# import plotly.express as px
+import plotly.express as px
 
 df = pd.read_csv('beer-servings.csv')
 df = df.drop(columns=['Unnamed: 0','country'])
@@ -16,11 +16,11 @@ with open('model_data.pkl', 'rb') as f:
 
 st.title("🍺 Beer Servings & Alcohol Predictor")
 
-# # Infographics Section
-# st.header("Global Alcohol Trends")
-# fig = px.scatter(df, x="beer_servings", y="total_litres_of_pure_alcohol", 
-#                  color="continent", title="Beer vs Total Pure Alcohol")
-# st.plotly_chart(fig)
+# Infographics Section
+st.header("Global Alcohol Trends")
+fig = px.scatter(df, x="beer_servings", y="total_litres_of_pure_alcohol", 
+                 color="continent", title="Beer vs Total Pure Alcohol")
+st.plotly_chart(fig)
 # --- UI Inputs ---
 continent = st.selectbox("Continent", continents)
 beer = st.number_input("Beer", 0)
